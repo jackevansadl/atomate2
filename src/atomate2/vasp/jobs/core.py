@@ -174,7 +174,8 @@ class NonSCFMaker(BaseVaspMaker):
         prev_dir: str | Path | None,
         mode: str = "uniform",
     ) -> Response:
-        """Run a non-scf VASP job.
+        """
+        Run a non-scf VASP job.
 
         Parameters
         ----------
@@ -347,7 +348,8 @@ class HSEBSMaker(BaseVaspMaker):
         prev_dir: str | Path | None = None,
         mode: Literal["line", "uniform", "gap"] = "uniform",
     ) -> Response:
-        """Run an HSE06 band structure VASP job.
+        """
+        Run a HSE06 band structure VASP job.
 
         Parameters
         ----------
@@ -379,7 +381,7 @@ class HSEBSMaker(BaseVaspMaker):
 
         # copy previous inputs
         if prev_dir is not None:
-            self.copy_vasp_kwargs.setdefault("additional_vasp_files", ("CHGCAR",))
+            self.copy_vasp_kwargs.setdefault("additional_vasp_files", ("CHGCAR","WAVECAR"))
 
         return super().make.original(self, structure, prev_dir)
 
@@ -477,7 +479,8 @@ class TransmuterMaker(BaseVaspMaker):
         structure: Structure,
         prev_dir: str | Path | None = None,
     ) -> Response:
-        """Run a transmuter VASP job.
+        """
+        Run a transmuter VASP job.
 
         Parameters
         ----------
